@@ -21,6 +21,12 @@ NEWSPIDER_MODULE = 'LDTCrawler.spiders'
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
+
+MYSQL_HOST = '192.168.1.103'
+MYSQL_DBNAME = 'default'
+MYSQL_USER = 'default'
+MYSQL_PASSWD = 'secret'
+
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
@@ -64,9 +70,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'LDTCrawler.pipelines.LdtcrawlerPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'LDTCrawler.pipelines.LdtcrawlerPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

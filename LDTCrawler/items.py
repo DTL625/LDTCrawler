@@ -7,8 +7,31 @@
 
 import scrapy
 
-
-class LdtcrawlerItem(scrapy.Item):
+# default
+# class LdtcrawlerItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    # pass
+
+class Astro108Item(scrapy.Item):
+    # 星座代碼
+    astro_code = scrapy.Field()
+    # 星座名稱
+    title_zh = scrapy.Field()
+    # 爬取日期
+    date = scrapy.Field()
+    # 爬取來源
+    source = scrapy.Field()
+    # 運勢指數
+    score_all = scrapy.Field()
+    score_money = scrapy.Field()
+    score_work = scrapy.Field()
+    score_love = scrapy.Field()
+    # 運勢內容
+    content_all = scrapy.Field()
+    content_money = scrapy.Field()
+    content_work = scrapy.Field()
+    content_love = scrapy.Field()
+    created_at = scrapy.Field()
+    updated_at = scrapy.Field()
+
