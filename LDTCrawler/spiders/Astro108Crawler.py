@@ -1,14 +1,13 @@
 from LDTCrawler.items import Astro108Item
 
 import scrapy, time, datetime
-
-
 from urllib.parse import unquote, urlparse;
 
 def str_after(subject, search):
     return subject.split(search)[1]
 
 class Astore108Spider(scrapy.Spider):
+    # 爬取科技紫微網12星座內容
     name = 'Astore108Crawler'
     allowed_domains = ['click108.com.tw']
     start_urls = ['http://astro.click108.com.tw/']
@@ -33,10 +32,7 @@ class Astore108Spider(scrapy.Spider):
         xpath = '//div[contains(@class, \'STAR12_BOX\')]/ul/li/a';
         stars = response.selector.xpath(xpath)
         for star in stars:
-            # get-title
-            # title_zh = star.xpath('./text()').extract_first()
-
-            # get-link
+            # 或取12星座頁面url
             initHref = star.xpath('./@href').extract_first()
             url = unquote(str_after(initHref, 'RedirectTo='))
 
@@ -84,12 +80,13 @@ class Astore108Spider(scrapy.Spider):
         xpath = '//select[@name=\'iAcDay\']/option[@selected=\'selected\']/text()';
         date = response.selector.xpath(xpath).extract_first();
         item['date'] = time.mktime(datetime.datetime.strptime(date, '%Y-%m-%d').timetuple())
-        # 4.
+        # 4.獲取星座代碼
         res = urlparse(response.url)
         astroCode = int(str_after(res.query, '='))
-
+        # 5.獲取其他內容
         item['astro_code'] = astroCode
         item['title_zh'] = self.astro_title.get(astroCode, '')
         item['source'] = 1  # 1:python
         item['created_at'] = item['updated_at'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
         yield item

@@ -16,7 +16,7 @@ import scrapy
 class Astro108Item(scrapy.Item):
     # 星座代碼
     astro_code = scrapy.Field()
-    # 星座名稱
+    # 星座名稱py
     title_zh = scrapy.Field()
     # 爬取日期
     date = scrapy.Field()

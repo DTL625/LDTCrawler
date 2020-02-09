@@ -22,7 +22,7 @@ NEWSPIDER_MODULE = 'LDTCrawler.spiders'
 ROBOTSTXT_OBEY = True
 
 
-MYSQL_HOST = '192.168.1.103'
+MYSQL_HOST = '192.168.1.104'
 MYSQL_DBNAME = 'default'
 MYSQL_USER = 'default'
 MYSQL_PASSWD = 'secret'
